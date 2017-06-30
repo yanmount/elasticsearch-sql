@@ -10,14 +10,17 @@ import java.util.List;
  * Created by allwefantasy on 8/31/16.
  */
 public class ElasticSearchResultSetMetaDataBase extends ResultSetMetaDataBase {
-    private final List<ColumnMetaData> columns = new ArrayList<ColumnMetaData>();
+    //columns has already been defined in parent,re-definition break the consistent for other functions like getColumns()
+//     private final List<ColumnMetaData> columns = new ArrayList<ColumnMetaData>();
 
     public ElasticSearchResultSetMetaDataBase(List<String> headers) {
         for(String column:headers){
             ColumnMetaData columnMetaData = new ColumnMetaData();
             columnMetaData.setColumnLabel(column);
             columnMetaData.setColumnName(column);
-            columns.add(columnMetaData);
+//             columns.add(columnMetaData);
+            //use the parent's member
+            getColumns().add(columnMetaData);
         }
     }
 }
